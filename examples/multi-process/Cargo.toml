@@ -1,0 +1,23 @@
+[package]
+name = "multi-process"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+publish = false
+license-file.workspace = true
+description = "Pulse Mesh template — two Rust processes (sender + receiver) over the local mesh-hub daemon."
+
+[[bin]]
+name = "sender"
+path = "src/sender.rs"
+
+[[bin]]
+name = "receiver"
+path = "src/receiver.rs"
+
+[dependencies]
+mesh-client = { path = "../../mesh/mesh-client" }
+
+[lints]
+workspace = true

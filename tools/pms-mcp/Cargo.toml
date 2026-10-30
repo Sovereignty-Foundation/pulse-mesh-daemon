@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: LicenseRef-Proprietary
+[package]
+name = "pms-mcp"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+description = "Model Context Protocol server for the Pulse Mesh Standard. Exposes mesh introspection + the cross-language canonical codec proof to LLM agents."
+
+[[bin]]
+name = "pms-mcp"
+path = "src/main.rs"
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+core-ring = { path = "../../../pulse-mesh/core/core-ring" }
+mesh-health = { path = "../../mesh/mesh-health" }
+mesh-basket = { path = "../../mesh/mesh-basket" }
+pulse-wire-udp = { path = "../../../pulse-mesh/core/pulse-wire-udp" }
+dev-hub = { path = "../../dev_ring/dev-hub" }
+pulse-cli = { path = "../../../pulse-mesh/tools/pulse-cli" }
+mesh-client = { path = "../../mesh/mesh-client" }
+anyhow = { workspace = true }
+clap = { workspace = true }
+hex = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,21 @@
+[package]
+name = "mesh-schema"
+description = "Pulse Mesh schema registry — envelope-type ACLs and producer/consumer relationships."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+serde_json.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+# The tests name producers by the key a client proved at attach.
+mesh-port-protocol = { path = "../mesh-port-protocol" }
+
+[lints]
+workspace = true

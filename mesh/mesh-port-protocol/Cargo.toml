@@ -1,0 +1,27 @@
+[package]
+name = "mesh-port-protocol"
+description = "Pulse Mesh Universal Port Protocol v0 — the wire types, the payload base64 codec and the Unix-socket framing shared by the daemon and its Rust clients. Tier 2 (the fabric)."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+keywords = ["pulse-mesh", "protocol", "wire-format"]
+categories = ["network-programming", "encoding"]
+
+[dependencies]
+serde = { workspace = true, features = ["derive"] }
+# Correctly rounded float parsing. By default serde_json may read a float
+# one unit in the last place away from the one it wrote, so a number in an
+# ack's extension fields would change on its way through a proxy or a
+# recorder that re-serialises the message.
+serde_json = { workspace = true, features = ["float_roundtrip"] }
+# Key-proof attach (`attach`): the Ed25519 proof both ends make and check,
+# and the node id BLAKE3 derives from the key.
+ed25519-dalek.workspace = true
+blake3.workspace = true
+
+[lints]
+workspace = true

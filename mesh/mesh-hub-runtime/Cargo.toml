@@ -1,0 +1,24 @@
+[package]
+name = "mesh-hub-runtime"
+description = "Pulse Mesh embedded hub runtime — the event-bus library that mesh-hub (the daemon) wraps."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+core-ring = { path = "../../../pulse-mesh/core/core-ring" }
+core-store = { path = "../../../pulse-mesh/core/core-store" }
+mesh-broadcast = { path = "../mesh-broadcast" }
+mesh-health = { path = "../mesh-health" }
+mesh-schema = { path = "../mesh-schema" }
+libc.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+
+
+[lints]
+workspace = true

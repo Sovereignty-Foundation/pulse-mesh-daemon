@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: LicenseRef-Proprietary
+[package]
+name = "pms-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+description = "pms — unified developer CLI for the Pulse Mesh Standard."
+
+[[bin]]
+name = "pms"
+path = "src/main.rs"
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+core-ring = { path = "../../../pulse-mesh/core/core-ring" }
+dev-hub = { path = "../../dev_ring/dev-hub" }
+mesh-client = { path = "../../mesh/mesh-client" }
+mesh-hub = { path = "../../mesh/mesh-hub", default-features = false }
+mesh-hub-runtime = { path = "../../mesh/mesh-hub-runtime" }
+pulse-cli = { path = "../../../pulse-mesh/tools/pulse-cli" }
+anyhow = { workspace = true }
+clap = { workspace = true }
+hex = { workspace = true }
+libc = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+assert_cmd = { workspace = true }
+tempfile = { workspace = true }
+
+[lints]
+workspace = true

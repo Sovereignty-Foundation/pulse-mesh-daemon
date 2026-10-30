@@ -1,0 +1,19 @@
+[package]
+name = "pms-telemetry-export"
+description = "Pulse Mesh metrics exporter: Prometheus output for processes running the mesh."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+keywords = ["pulse-mesh", "prometheus", "telemetry", "metrics"]
+categories = ["development-tools::profiling"]
+[dependencies]
+prometheus = "0.14"
+thiserror.workspace = true
+tracing.workspace = true
+
+[lints]
+workspace = true

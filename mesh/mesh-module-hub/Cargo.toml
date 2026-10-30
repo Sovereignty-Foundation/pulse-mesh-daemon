@@ -1,0 +1,23 @@
+[package]
+name = "mesh-module-hub"
+description = "Pulse Mesh child-hub abstraction — bridges a node's internal processing to a parent PulseHub."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[package.metadata.pulse-mesh]
+# Vendored from sovOS and used by nothing in the tree yet; ADR-0014.
+status = "pre-integration"
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+mesh-broadcast = { path = "../mesh-broadcast" }
+mesh-hub-runtime = { path = "../mesh-hub-runtime" }
+parking_lot.workspace = true
+
+
+[lints]
+workspace = true

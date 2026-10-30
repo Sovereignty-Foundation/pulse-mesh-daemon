@@ -1,0 +1,114 @@
+# Standalone fuzz workspace — opts out of the main pulse-mesh workspace
+# so libfuzzer-sys's nightly-only build instructions don't fight
+# `cargo build --workspace` at the repo root. Mirrors the same pattern
+# the enterprise-bindings sub-workspaces use for napi-rs / pyo3 /
+# cbindgen.
+[workspace]
+
+[package]
+name = "pulse-mesh-fuzz"
+version = "1.0.0-beta"
+edition = "2021"
+publish = false
+license-file = "../LICENSE"
+description = "cargo-fuzz harness for the daemon's parsers of untrusted bytes: the port protocol's base64 payloads, its Unix-socket framing and its JSON messages, an envelope's origin, the client's routing of what a daemon sends"
+
+[package.metadata]
+cargo-fuzz = true
+
+[lib]
+name = "pulse_mesh_fuzz"
+path = "src/lib.rs"
+
+[dependencies]
+libfuzzer-sys = "0.4"
+async-trait = "0.1"
+
+# Path deps on the parsers under test. Same sibling-clone discipline
+# as the rest of the workspace.
+pulse-wire-udp     = { path = "../../pulse-mesh/core/pulse-wire-udp" }
+pulse-canon        = { path = "../../pulse-mesh/pulse/pulse-canon" }
+core-ring          = { path = "../../pulse-mesh/core/core-ring" }
+core-store         = { path = "../../pulse-mesh/core/core-store" }
+mesh-port-protocol = { path = "../mesh/mesh-port-protocol" }
+# Without the basket feature: the targets need no SQLite.
+mesh-hub           = { path = "../mesh/mesh-hub", default-features = false }
+mesh-hub-runtime   = { path = "../mesh/mesh-hub-runtime" }
+mesh-lex           = { path = "../../pulse-mesh/pulse/mesh-lex" }
+mesh-client        = { path = "../mesh/mesh-client" }
+mesh-link          = { path = "../mesh/mesh-link" }
+serde              = "1.0"
+serde_json         = "1.0"
+# Independent oracles: the envelope id and the Lexicon's hashes are
+# recomputed from the specification with BLAKE3 directly.
+blake3             = "1.5"
+libc               = "0.2"
+tokio              = { version = "1.37", features = ["rt", "sync", "time"] }
+
+# Fuzz targets must be declared individually so cargo-fuzz can pick
+# them up. Each is a `bin` whose path points at a `fuzz_targets/`
+# file.
+
+[[bin]]
+name = "fuzz_port_messages"
+path = "fuzz_targets/fuzz_port_messages.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_base64"
+path = "fuzz_targets/fuzz_base64.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_uds_framing"
+path = "fuzz_targets/fuzz_uds_framing.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_origin"
+path = "fuzz_targets/fuzz_origin.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_client_routing"
+path = "fuzz_targets/fuzz_client_routing.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_link_interest"
+path = "fuzz_targets/fuzz_link_interest.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_link_control"
+path = "fuzz_targets/fuzz_link_control.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_link_wire"
+path = "fuzz_targets/fuzz_link_wire.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_link_announce"
+path = "fuzz_targets/fuzz_link_announce.rs"
+test = false
+doc = false
+bench = false
+

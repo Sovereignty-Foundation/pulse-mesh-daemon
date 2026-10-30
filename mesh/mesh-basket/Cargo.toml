@@ -1,0 +1,24 @@
+[package]
+name = "mesh-basket"
+description = "Pulse Mesh envelope basket: the daemon's SQLite capture of published envelopes, which pms-query and the MCP server's tools query by channel, time, type and origin. Tier 2 (the fabric)."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+keywords = ["pulse-mesh", "sqlite", "envelope-capture"]
+categories = ["database"]
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+blake3.workspace = true
+rusqlite.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true

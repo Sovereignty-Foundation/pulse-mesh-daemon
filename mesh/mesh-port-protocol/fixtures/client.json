@@ -1,0 +1,164 @@
+[
+  {
+    "frame": {
+      "capabilities": [],
+      "name": "worker",
+      "op": "attach",
+      "protocol_version": "v0"
+    },
+    "name": "attach.minimal"
+  },
+  {
+    "frame": {
+      "capabilities": [
+        "send",
+        "subscribe",
+        "tap"
+      ],
+      "id": "1",
+      "name": "worker",
+      "op": "attach",
+      "protocol_version": "v0"
+    },
+    "name": "attach.full"
+  },
+  {
+    "frame": {
+      "capabilities": [
+        "send",
+        "subscribe",
+        "tap"
+      ],
+      "id": "1",
+      "key": "BwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwc=",
+      "name": "worker",
+      "op": "attach",
+      "protocol_version": "v0"
+    },
+    "name": "attach.with_key"
+  },
+  {
+    "frame": {
+      "id": "1",
+      "op": "prove",
+      "signature": "AwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw=="
+    },
+    "name": "prove"
+  },
+  {
+    "frame": {
+      "op": "detach"
+    },
+    "name": "detach.minimal"
+  },
+  {
+    "frame": {
+      "id": "9",
+      "op": "detach"
+    },
+    "name": "detach.with_id"
+  },
+  {
+    "frame": {
+      "channel": "c",
+      "flags": 0,
+      "op": "send",
+      "payload": "aGk=",
+      "type_id": 0
+    },
+    "name": "send.minimal"
+  },
+  {
+    "frame": {
+      "channel": "c",
+      "flags": 0,
+      "id": "2",
+      "op": "send",
+      "payload": "aGk=",
+      "type_id": 0,
+      "type_name": "app/hi"
+    },
+    "name": "send.named"
+  },
+  {
+    "frame": {
+      "channel": "c",
+      "flags": 1,
+      "id": "3",
+      "op": "send",
+      "payload": "aGk=",
+      "type_id": 7,
+      "type_name": "app/hi"
+    },
+    "name": "send.full"
+  },
+  {
+    "frame": {
+      "channel": "c",
+      "flags": 0,
+      "id": "8",
+      "op": "send",
+      "payload": "aGk=",
+      "to": "worker@1a2b3c4d",
+      "type_id": 0
+    },
+    "name": "send.to_local"
+  },
+  {
+    "frame": {
+      "channel": "c",
+      "flags": 0,
+      "id": "9",
+      "op": "send",
+      "payload": "aGk=",
+      "to": "worker@00112233445566ff",
+      "type_id": 0,
+      "type_name": "app/hi"
+    },
+    "name": "send.to_qualified"
+  },
+  {
+    "frame": {
+      "filter": {},
+      "id": "4",
+      "op": "subscribe"
+    },
+    "name": "subscribe.empty_filter"
+  },
+  {
+    "frame": {
+      "filter": {
+        "channel": "c",
+        "health": true,
+        "origin": "worker@1a2b3c4d",
+        "snapshot": true,
+        "type_id": 7,
+        "type_name": "app/*"
+      },
+      "id": "5",
+      "op": "subscribe"
+    },
+    "name": "subscribe.full_filter"
+  },
+  {
+    "frame": {
+      "id": "6",
+      "op": "unsubscribe",
+      "subscription_id": "sub-1"
+    },
+    "name": "unsubscribe"
+  },
+  {
+    "frame": {
+      "op": "health"
+    },
+    "name": "health.minimal"
+  },
+  {
+    "frame": {
+      "op": "health",
+      "state": "ok"
+    },
+    "name": "health.with_state"
+  }
+]

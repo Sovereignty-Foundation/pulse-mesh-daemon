@@ -1,0 +1,19 @@
+[package]
+name = "mesh-health"
+description = "Pulse Mesh HealthRegistry: per-node heartbeat tracking that escalates a silent node through Healthy → Warning → Restarting → Isolated and reports drift as Degraded. Tier 2 (the fabric)."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+keywords = ["pulse-mesh", "health", "heartbeat", "state-machine"]
+categories = ["network-programming"]
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+thiserror.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,49 @@
+[package]
+name = "mesh-client"
+description = "Pulse Mesh — the Rust client for the daemon: `Mesh`, a synchronous handle over the Universal Port Protocol, with endpoint discovery, bounded queues, timed calls and callbacks on a thread of its own. Tier 2 (the fabric)."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+mesh-port-protocol = { path = "../mesh-port-protocol" }
+
+# The connection: an async runtime of the client's own, the two transports.
+tokio = { workspace = true, features = [
+    "rt-multi-thread",
+    "macros",
+    "net",
+    "sync",
+    "io-util",
+    "time",
+] }
+tokio-tungstenite.workspace = true
+futures-util.workspace = true
+# `wss://`: TLS 1.3 on rustls, trusting webpki-roots' roots and the CAs a
+# caller adds.
+rustls.workspace = true
+tokio-rustls.workspace = true
+webpki-roots.workspace = true
+
+serde_json.workspace = true
+thiserror.workspace = true
+# Key files (`identity`): a new key's seed from the operating system, and
+# buffers cleared as they drop.
+getrandom.workspace = true
+zeroize.workspace = true
+tracing.workspace = true
+parking_lot.workspace = true
+
+[dev-dependencies]
+# The client's tests run against an in-process daemon.
+mesh-hub = { path = "../mesh-hub" }
+# waitpid, for the silent-daemon test to know its daemon has stopped.
+libc.workspace = true
+# Certificates for the wss:// tests.
+rcgen.workspace = true
+
+[lints]
+workspace = true

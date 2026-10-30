@@ -1,0 +1,27 @@
+[package]
+name = "dev-stages"
+description = "Pulse Mesh — dev_ring stages layer: the symbol-keyed conflation router over a PulseRing."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+dev-core = { path = "../dev-core" }
+dev-functions = { path = "../dev-functions" }
+
+# conflation submodule (absorbed from `pms-conflation`)
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+core-ring = { path = "../../../pulse-mesh/core/core-ring" }
+crc32c.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

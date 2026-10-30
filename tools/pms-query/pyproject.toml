@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pms-query"
+version = "1.0.0b0"
+description = "Pulse Mesh basket query tool — structured CLI over the basket SQLite store."
+requires-python = ">=3.9"
+license = { text = "LicenseRef-Proprietary" }
+classifiers = [
+    "License :: Other/Proprietary License",
+    "Private :: Do Not Upload",
+]
+authors = [{ name = "Sovereignty Foundation Inc." }]
+dependencies = []
+
+[project.scripts]
+pms-query = "pms_query.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["pms_query*"]

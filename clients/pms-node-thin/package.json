@@ -1,0 +1,16 @@
+{
+  "name": "@sovfound/pms-node-thin",
+  "license": "UNLICENSED",
+  "version": "1.0.0-beta",
+  "private": true,
+  "description": "Pulse Mesh thin Node client — Universal Port Protocol v0 over WebSocket.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}

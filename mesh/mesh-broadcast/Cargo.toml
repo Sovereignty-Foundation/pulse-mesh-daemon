@@ -1,0 +1,19 @@
+[package]
+name = "mesh-broadcast"
+description = "Pulse Mesh BroadcastRegistry + ListenFilter: in-process fan-out of PulseEnvelopes to matching listeners. Tier 2 (the fabric)."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+keywords = ["pulse-mesh", "broadcast", "fan-out", "listen", "filter"]
+categories = ["data-structures"]
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+thiserror.workspace = true
+
+[lints]
+workspace = true

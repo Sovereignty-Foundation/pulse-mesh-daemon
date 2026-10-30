@@ -1,0 +1,192 @@
+[
+  {
+    "frame": {
+      "op": "ack"
+    },
+    "name": "ack.minimal"
+  },
+  {
+    "frame": {
+      "granted_capabilities": [
+        "send",
+        "subscribe",
+        "tap"
+      ],
+      "id": "1",
+      "node_id": "worker@1a2b3c4d",
+      "op": "ack",
+      "protocol_version": "v0"
+    },
+    "name": "ack.attach"
+  },
+  {
+    "frame": {
+      "id": "1",
+      "nonce": "CQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQk=",
+      "op": "challenge"
+    },
+    "name": "challenge"
+  },
+  {
+    "frame": {
+      "granted_capabilities": [
+        "send",
+        "subscribe",
+        "tap"
+      ],
+      "id": "1",
+      "node_id": "worker@0123456789abcdef0123456789abcdef",
+      "op": "ack",
+      "protocol_version": "v0"
+    },
+    "name": "ack.attach.keyed"
+  },
+  {
+    "frame": {
+      "envelope_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "id": "2",
+      "op": "ack",
+      "persisted": true
+    },
+    "name": "ack.send"
+  },
+  {
+    "frame": {
+      "envelope_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "id": "2",
+      "op": "ack",
+      "persisted": false
+    },
+    "name": "ack.send.not_persisted"
+  },
+  {
+    "frame": {
+      "envelope_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "id": "2",
+      "op": "ack"
+    },
+    "name": "ack.send.no_store"
+  },
+  {
+    "frame": {
+      "delivered": true,
+      "envelope_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "id": "8",
+      "op": "ack"
+    },
+    "name": "ack.send.delivered"
+  },
+  {
+    "frame": {
+      "delivered": false,
+      "envelope_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "id": "8",
+      "op": "ack"
+    },
+    "name": "ack.send.not_delivered"
+  },
+  {
+    "frame": {
+      "id": "4",
+      "op": "ack",
+      "subscription_id": "sub-1"
+    },
+    "name": "ack.subscribe"
+  },
+  {
+    "frame": {
+      "events_dropped": 3,
+      "id": "6",
+      "op": "ack"
+    },
+    "name": "ack.unsubscribe"
+  },
+  {
+    "frame": {
+      "id": "7",
+      "lease_ms": 1500,
+      "op": "ack"
+    },
+    "name": "ack.with_extension"
+  },
+  {
+    "frame": {
+      "code": "limit_exceeded",
+      "message": "at most 256 connections (--max-connections)",
+      "op": "error"
+    },
+    "name": "error.minimal"
+  },
+  {
+    "frame": {
+      "code": "payload_too_large",
+      "id": "2",
+      "message": "payload exceeds 1048576 bytes",
+      "op": "error"
+    },
+    "name": "error.with_id"
+  },
+  {
+    "frame": {
+      "code": "auth_failed",
+      "id": "1",
+      "message": "the signature does not prove the key for this challenge, name and connection",
+      "op": "error"
+    },
+    "name": "error.auth_failed"
+  },
+  {
+    "frame": {
+      "code": "unknown_destination",
+      "id": "9",
+      "message": "no node worker@00112233445566ff is attached here or announced by a linked daemon",
+      "op": "error"
+    },
+    "name": "error.unknown_destination"
+  },
+  {
+    "frame": {
+      "captured_at_unix_nanos": 1700000000000000000,
+      "channel": "c",
+      "envelope_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "op": "event",
+      "origin": "worker@1a2b3c4d",
+      "payload": "aGk=",
+      "subscription_id": "sub-1",
+      "type_id": 0
+    },
+    "name": "event.minimal"
+  },
+  {
+    "frame": {
+      "captured_at_unix_nanos": 1700000000000000000,
+      "channel": "c",
+      "envelope_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "op": "event",
+      "origin": "worker@1a2b3c4d",
+      "payload": "aGk=",
+      "subscription_id": "sub-1",
+      "type_id": 7,
+      "type_name": "app/hi"
+    },
+    "name": "event.full"
+  },
+  {
+    "frame": {
+      "node_id": "worker@1a2b3c4d",
+      "op": "health",
+      "since_unix_nanos": 0,
+      "state": "degraded"
+    },
+    "name": "health.minimal"
+  },
+  {
+    "frame": {
+      "node_id": "worker@1a2b3c4d",
+      "op": "health",
+      "since_unix_nanos": 1700000000000000000,
+      "state": "healthy"
+    },
+    "name": "health.with_since"
+  }
+]

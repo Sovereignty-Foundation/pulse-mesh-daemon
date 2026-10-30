@@ -1,0 +1,3 @@
+# `dev_ring/`
+
+The general-purpose developer ring. `dev-hub` is the ring's import point and re-exports the daemon's Rust client from `mesh-client` (`Mesh`: attach, send, on, tap, run; ADR-0012), `dev-functions` holds the ring inspector and the module table and re-exports the basket, `dev-stages` holds the conflation router, and `dev-core` is an empty placeholder that keeps the four-crate shape. Depend on `dev-hub`. The book's page is [dev ring](https://pulse-mesh.net/docs/daemon/architecture/rings/dev_ring.html), the client is used in [Two programs talk through the daemon](https://pulse-mesh.net/docs/daemon/examples/two-programs.html), and the crates are in the generated [crate index](https://pulse-mesh.net/docs/daemon/reference/crates.html).

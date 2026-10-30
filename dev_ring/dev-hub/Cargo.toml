@@ -1,0 +1,20 @@
+[package]
+name = "dev-hub"
+description = "Pulse Mesh — dev_ring hub layer: the ring's import point; re-exports core, functions and stages, emits the ring manifest via `mesh_stage_registry::register_stages!`, and re-exports the Rust client (`mesh-client`) that lived here before ADR-0012."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+dev-core = { path = "../dev-core" }
+dev-functions = { path = "../dev-functions" }
+dev-stages = { path = "../dev-stages" }
+mesh-stage-registry = { path = "../../../pulse-mesh/core/mesh-stage-registry" }
+# The Rust client for the daemon, re-exported so `dev_hub::Mesh` keeps working (ADR-0012).
+mesh-client = { path = "../../mesh/mesh-client" }
+
+[lints]
+workspace = true

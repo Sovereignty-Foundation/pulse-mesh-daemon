@@ -1,0 +1,25 @@
+[package]
+name = "mesh-link"
+description = "Pulse Mesh links between daemons, without a transport: qualified origins, interest summaries and their pacing, the forwarding decision, the forward cache, the hop limit and the link's control messages (ADR-0021). Tier 2 (the fabric)."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+keywords = ["pulse-mesh", "mesh", "routing", "link"]
+categories = ["network-programming"]
+
+[dependencies]
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+mesh-health = { path = "../mesh-health" }
+mesh-port-protocol = { path = "../mesh-port-protocol" }
+blake3.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lints]
+workspace = true

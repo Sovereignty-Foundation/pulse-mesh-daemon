@@ -1,0 +1,9 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc 573df5119cb2a02e834793f41d57708b00b3c91ea0a5a111d856ad29c6c7ac60 # shrinks to filters = [FilterSpec { channel: None, type_id: None, type_name: Some("a*"), origin: None, health: false, snapshot: false }], random = [], seeds = [1, 1, 1, 1, 1, 1]
+cc 836bb534e798decb51be0777653307197a4edaf659a25336c6120a374125a9bd # shrinks to filters = [FilterSpec { channel: None, type_id: None, type_name: Some("a**"), origin: None, health: false, snapshot: false }], random = [("a", 0, None, "w@0a0b0c0d")], seeds = [1, 1, 1, 1, 1, 1]
+cc 598cd513d7918efc08750207d7597dd8ced89bca66e2c7a0788d9b9a523a6f27 # shrinks to filters = [FilterSpec { channel: Some("a*"), type_id: None, type_name: None, origin: None, health: false, snapshot: false }, FilterSpec { channel: Some("b*"), type_id: None, type_name: None, origin: None, health: false, snapshot: false }], random = [], seeds = [1, 1, 1, 1, 1, 1]

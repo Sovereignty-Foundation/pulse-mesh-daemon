@@ -1,0 +1,30 @@
+[package]
+name = "dev-functions"
+description = "Pulse Mesh — dev_ring functions layer: the basket re-export and the core_ops the pms command line and the MCP server share."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+dev-core = { path = "../dev-core" }
+
+# basket: the tier-2 crate, re-exported at `dev_functions::basket`
+mesh-basket = { path = "../../mesh/mesh-basket" }
+
+# core_ops: the ring inspector and the module table
+core-ring = { path = "../../../pulse-mesh/core/core-ring" }
+mesh-hub-runtime = { path = "../../mesh/mesh-hub-runtime" }
+serde = { workspace = true, features = ["derive"] }
+thiserror.workspace = true
+
+[dev-dependencies]
+# the ring inspector's test publishes a Pulse to read back
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+# the module table's test reads `cargo metadata`
+serde_json.workspace = true
+
+[lints]
+workspace = true

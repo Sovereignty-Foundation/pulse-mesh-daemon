@@ -1,0 +1,107 @@
+[package]
+name = "mesh-hub"
+description = "Pulse Mesh local daemon — terminates the universal port protocol over UDS + WebSocket."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license-file.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "mesh-hub"
+path = "src/main.rs"
+
+[dependencies]
+# Workspace primitives
+pulse-canon = { path = "../../../pulse-mesh/pulse/pulse-canon" }
+mesh-health = { path = "../mesh-health" }
+mesh-hub-runtime = { path = "../mesh-hub-runtime" }
+mesh-lex = { path = "../../../pulse-mesh/pulse/mesh-lex" }
+mesh-port-protocol = { path = "../mesh-port-protocol" }
+mesh-basket = { path = "../mesh-basket", optional = true }
+# Links to other daemons (ADR-0021): the routing logic, the capability Hello,
+# and the sealed UDP they run on (ADR-0018).
+mesh-link = { path = "../mesh-link" }
+mesh-capability = { path = "../../../pulse-mesh/pulse/mesh-capability" }
+pulse-wire-udp = { path = "../../../pulse-mesh/core/pulse-wire-udp" }
+
+# Async runtime + transports
+tokio = { workspace = true, features = [
+    "rt-multi-thread",
+    "macros",
+    "net",
+    "sync",
+    "io-util",
+    "signal",
+    "time",
+    "fs",
+] }
+tokio-tungstenite.workspace = true
+# TLS 1.3 for the WebSocket, `wss://`, with --ws-tls-cert and --ws-tls-key.
+rustls.workspace = true
+tokio-rustls.workspace = true
+# Key-proof attach: the challenge's nonce, from the operating system.
+getrandom.workspace = true
+
+# Protocol shape
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+
+# CLI + diagnostics
+clap.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Transport plumbing
+async-trait.workspace = true
+futures-util.workspace = true
+
+# Concurrent registry state
+parking_lot.workspace = true
+
+# OpenTelemetry export of the daemon's spans over OTLP/HTTP, with the `otel`
+# feature: protobuf over hyper's HTTP/1.1 client, which needs no TLS stack.
+opentelemetry = { workspace = true, optional = true, features = ["trace"] }
+opentelemetry-otlp = { workspace = true, optional = true, features = [
+    "trace",
+    "http-proto",
+    "hyper-client",
+    "internal-logs",
+] }
+opentelemetry_sdk = { workspace = true, optional = true, features = [
+    "trace",
+    "rt-tokio",
+    "experimental_trace_batch_span_processor_with_async_runtime",
+] }
+tracing-opentelemetry = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile.workspace = true
+# The wss:// tests: certificates made for them, and the Rust client attaching
+# over TLS.
+rcgen.workspace = true
+mesh-client = { path = "../mesh-client" }
+# The key-proof attach tests: a schema whose producer list names a key.
+mesh-schema = { path = "../mesh-schema" }
+# The link tests: the store's entry size, which a forward of a full entry
+# must fit once the transport's message limit allows it.
+core-store = { path = "../../../pulse-mesh/core/core-store" }
+
+[features]
+default = ["basket"]
+# Capture envelopes into a basket SQLite store for structured queries.
+# Disable for a smaller binary if you don't need agent-side telemetry.
+basket = ["dep:mesh-basket"]
+# Export the daemon's spans over OTLP/HTTP when OTEL_EXPORTER_OTLP_ENDPOINT
+# or OTEL_EXPORTER_OTLP_TRACES_ENDPOINT is set; see README.md.
+otel = [
+    "dep:opentelemetry",
+    "dep:opentelemetry-otlp",
+    "dep:opentelemetry_sdk",
+    "dep:tracing-opentelemetry",
+]
+
+[lints]
+workspace = true
